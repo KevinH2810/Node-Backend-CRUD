@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
 
 // Protected: GET /books
 router.get("/", 
-    // authMiddleware, 
+    authMiddleware, 
     (req, res) => {
     bookController.getAllBooks(req, res);
 });
