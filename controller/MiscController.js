@@ -5,13 +5,11 @@ module.exports = class MiscController extends BaseController {
 		super();
 	}
 
-    ping(req, res)  {
-
+    async ping(req, res) {
         return this.sendSuccessResponse(res, {
-							status: 200,
-							message: "User pong",
-						});
-    }
+        success: true
+    });
+}
 
     echo(req, res) {
 
