@@ -8,14 +8,10 @@ module.exports = class MiscController extends BaseController {
     async ping(req, res) {
         return this.sendSuccessResponse(res, {
         success: true
-    });
-}
+        });
+    }
 
-    echo(req, res) {
-
-        return this.sendSuccessResponse(res, {
-							status: 200,
-							message: req.body,
-						});
+    async echo(req, res) {
+        return res.status(200).json(req.body);
     }
 }
