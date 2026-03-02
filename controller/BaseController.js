@@ -33,26 +33,4 @@ module.exports = class BaseController {
 	sendBadRequestResponse(res, response_body = {}) {
 		res.status(400).json(response_body);
 	}
-
-	hashPassword(password) {
-    // let salt = crypto.randomBytes(128).toString('base64');
-    return new Promise(resolve => {
-      let salt = config.salt.salt;
-		let iterations = config.salt.iteration;
-		crypto.pbkdf2(
-			password,
-			salt,
-			parseInt(iterations),
-			32,
-			"sha1",
-			(err, res) => {
-				resolve(res.toString())
-			}
-		);
-    })
-	}
-
-	isPasswordCorrect(password, savedHash) {
-		return savedHash == this.hashPassword(password);
-	}
 };
