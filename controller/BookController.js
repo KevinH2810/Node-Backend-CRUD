@@ -30,7 +30,7 @@ module.exports = class BooksController extends BaseController {
             limit: limit ? parseInt(limit) : undefined
         });
 
-        return this.sendSuccessResponse(res, books);
+        return res.status(200).json(books);
     }
 
     async getBookById(req, res) {
