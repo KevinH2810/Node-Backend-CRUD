@@ -2,5 +2,5 @@
     app.use("/", require('./healthcheck'));
     app.use("/", require('./echo'));
     app.use("/books", require('./books'))
-    app.use("/", require('./auth'))
+    app.use("/auth", require('./auth'))
   }
