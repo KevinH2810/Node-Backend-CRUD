@@ -36,12 +36,6 @@ module.exports = class BooksController extends BaseController {
     async getBookById(req, res) {
         const id = parseInt(req.params.id);
 
-        if (isNaN(id)) {
-            return this.sendBadRequestResponse(res, {
-                error: "Invalid ID"
-            });
-        }
-
         const book = booksService.getById(id);
 
         if (!book) {
@@ -50,17 +44,11 @@ module.exports = class BooksController extends BaseController {
             });
         }
 
-        return this.sendSuccessResponse(res, book);
+        return res.status(200).json(book);
     }
 
     async updateBook(req, res) {
         const id = parseInt(req.params.id);
-
-        if (isNaN(id)) {
-            return this.sendBadRequestResponse(res, {
-                error: "Invalid ID"
-            });
-        }
 
         const updated = booksService.update(id, req.body);
 
@@ -70,17 +58,11 @@ module.exports = class BooksController extends BaseController {
             });
         }
 
-        return this.sendSuccessResponse(res, updated);
+        return res.status(200).json(updated);
     }
 
     async deleteBook(req, res) {
         const id = parseInt(req.params.id);
-
-        if (isNaN(id)) {
-            return this.sendBadRequestResponse(res, {
-                error: "Invalid ID"
-            });
-        }
 
         const deleted = booksService.remove(id);
 
@@ -90,7 +72,6 @@ module.exports = class BooksController extends BaseController {
             });
         }
 
-        // 204 should not return body
         return res.status(204).send();
     }
 };
